@@ -1,0 +1,72 @@
+{
+  "source": "/Users/paurakh/Documents/core-projects/AutoQuit/AutoQuit/ContentView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "AutoQuit is Running",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 20
+        }
+      },
+      {
+        "comment": "",
+        "key": "This app runs in the background. You can close this window.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 23
+        }
+      },
+      {
+        "comment": "",
+        "key": "Permission Needed",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 31
+        }
+      },
+      {
+        "comment": "",
+        "key": "AutoQuit needs Accessibility permissions to detect when you close other apps.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 34
+        }
+      },
+      {
+        "comment": "",
+        "key": "Show App in Finder again",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 61
+        }
+      },
+      {
+        "comment": "",
+        "key": "1. Open Settings & Finder",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 47
+        }
+      },
+      {
+        "comment": "",
+        "key": "Drag 'AutoQuit' from the Finder window into the list.",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 54
+        }
+      },
+      {
+        "comment": "",
+        "key": "Toggle the switch to ON.",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 55
+        }
+      }
+    ]
+  },
+  "version": 1
+}

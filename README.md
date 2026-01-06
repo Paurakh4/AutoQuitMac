@@ -9,6 +9,10 @@ AutoQuit is a lightweight macOS utility that automatically quits applications wh
 - **Menu Bar Integration**: Runs quietly in the menu bar for easy access.
 - **Accessibility Integration**: Uses macOS Accessibility APIs to monitor window states securely.
 
+## Why AutoQuit?
+
+If you've recently moved from Windows to macOS, you might find it irritating that closing the last window of an app doesn't actually quit the application. On macOS, many apps (like Mail, Calendar, or Spotify) stay running in the dock even after you've closed all their windows. AutoQuit bridges this gap by bringing the familiar "close to quit" behavior to your Mac, keeping your workspace clean and saving system resources.
+
 ## How it Works
 
 Many macOS applications (like Mail, Calendar, or Spotify) continue to run even after you've closed all their windows. AutoQuit monitors these applications and sends a terminate signal once it detects that no visible, standard windows remain open.
@@ -38,4 +42,4 @@ Build and run the project directly from Xcode.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under a custom **Personal Use & Non-Commercial License** - see the [LICENSE](LICENSE) file for details.

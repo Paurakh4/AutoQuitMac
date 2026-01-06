@@ -1,0 +1,15 @@
+# Requested ignores
+frontend-design-skill.md
+website/
+
+# macOS
+.DS_Store
+
+# Xcode
+build/
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+*.xcworkspace
+!*.xcworkspace/contents.xcworkspacedata
+xcuserdata/
+DerivedData/

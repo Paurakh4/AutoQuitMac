@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    tags:
+      - release
+      - v*
   pull_request:
   workflow_dispatch:
 
@@ -52,3 +55,29 @@ jobs:
         with:
           name: AutoQuit.app.zip
           path: AutoQuit.app.zip
+
+  publish-release:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: build-and-verify
+    runs-on: macos-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download packaged app
+        uses: actions/download-artifact@v4
+        with:
+          name: AutoQuit.app.zip
+
+      - name: Publish release asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag_name="${GITHUB_REF_NAME}"
+          asset_path="$PWD/AutoQuit.app.zip"
+
+          if gh release view "$tag_name" >/dev/null 2>&1; then
+            gh release upload "$tag_name" "$asset_path#AutoQuit.app.zip" --clobber
+          else
+            gh release create "$tag_name" "$asset_path#AutoQuit.app.zip" --title "AutoQuit $tag_name"
+          fi

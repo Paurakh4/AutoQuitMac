@@ -19,8 +19,8 @@ Many macOS applications (like Mail, Calendar, or Spotify) continue to run even a
 
 ## Installation
 
-1. Download or build the project using Xcode.
-2. Move `AutoQuit.app` to your `/Applications` folder.
+1. Download the latest `AutoQuit.app.zip` from GitHub Releases, or build the project locally with Xcode.
+2. Unzip the archive and move `AutoQuit.app` to your `/Applications` folder.
 3. Launch the app.
 4. **Grant Permissions**: AutoQuit requires **Accessibility** permissions to monitor other apps' windows. Follow the on-screen instructions to enable this in `System Settings > Privacy & Security > Accessibility`.
 
@@ -28,7 +28,7 @@ Many macOS applications (like Mail, Calendar, or Spotify) continue to run even a
 
 - **Language**: Swift
 - **Framework**: SwiftUI / AppKit
-- **Requirements**: macOS 12.0 or later
+- **Requirements**: macOS 12.0 or later, including newer Tahoe releases such as macOS 26.5
 
 ### Building from Source
 
@@ -39,6 +39,12 @@ open AutoQuit.xcodeproj
 ```
 
 Build and run the project directly from Xcode.
+
+## Release Process
+
+- Build release artifacts from the Xcode project, not from a checked-in `.app` bundle.
+- Package the release as `AutoQuit.app.zip` so the download URL stays stable.
+- Verify the built app reports `LSMinimumSystemVersion = 12.0` before publishing.
 
 ## License
 

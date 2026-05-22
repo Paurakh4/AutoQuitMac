@@ -13,3 +13,7 @@ build/
 !*.xcworkspace/contents.xcworkspacedata
 xcuserdata/
 DerivedData/
+
+# Release artifacts
+AutoQuitApp/*.app
+AutoQuitApp/*.zip

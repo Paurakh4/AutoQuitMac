@@ -1,0 +1,54 @@
+name: Release Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-and-verify:
+    runs-on: macos-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Reject committed app bundles
+        run: |
+          if [ -d AutoQuitApp/AutoQuit.app ]; then
+            echo "Remove committed app bundles from AutoQuitApp before publishing a release."
+            exit 1
+          fi
+
+      - name: Build Release app
+        run: |
+          xcodebuild \
+            -project AutoQuit.xcodeproj \
+            -scheme AutoQuit \
+            -configuration Release \
+            -derivedDataPath build/ci \
+            CODE_SIGNING_ALLOWED=NO \
+            clean build
+
+      - name: Verify minimum supported macOS version
+        run: |
+          minimum_os="$(defaults read "$PWD/build/ci/Build/Products/Release/AutoQuit.app/Contents/Info" LSMinimumSystemVersion)"
+          if [ "$minimum_os" != "12.0" ]; then
+            echo "Expected LSMinimumSystemVersion to be 12.0, got $minimum_os"
+            exit 1
+          fi
+
+      - name: Package release artifact
+        run: |
+          ditto -c -k --sequesterRsrc --keepParent \
+            "$PWD/build/ci/Build/Products/Release/AutoQuit.app" \
+            "$PWD/AutoQuit.app.zip"
+          test -f "$PWD/AutoQuit.app.zip"
+
+      - name: Upload packaged app
+        uses: actions/upload-artifact@v4
+        with:
+          name: AutoQuit.app.zip
+          path: AutoQuit.app.zip
